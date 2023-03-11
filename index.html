@@ -1,0 +1,738 @@
+<style>
+  #login_container {
+    position: absolute;
+    display: block;
+    background: #D3D3D3;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    height: 85%;
+  }
+  #homepage_container {
+    display: none;
+    /* background: #e6f5ff; */
+    background-color: #D3D3D3;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    overflow-y: auto;
+  }
+  #login_box {
+    position: absolute;
+    background-color: #181818;
+    width: 40%;
+    height: 51%;
+    margin: 0;
+    top: 43%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 0.75vmax;
+    box-shadow: 0.5vmax 0.5vmax 0.5vmax #888888;
+  }
+  #information {
+    position: relative;
+    top: 86%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 3%;
+    background-color: #181818;
+    color: #D3D3D3;
+    font-size: 240%;
+    padding-top: 3%;
+  }
+  #messageText {
+    position: absolute;
+    bottom: 93%;
+    visibility: hidden;
+    background-color: dodgerblue;
+    width: 35%;
+    font-size: 1.75vmax;
+    color: white;
+    border-radius: 0.5vmax;
+    left: 32%;
+    text-align: center;
+    display: block;
+    z-index: 999999;
+  }
+  #usernameInput {
+    position: relative;
+    border: solid;
+    border-color: black;
+    border-style: double;
+    left: 12%;
+    top: 15%;
+    height: 15%;
+    width: 75%;
+    font-size: 400%;
+  }
+  #passwordInput {
+    position: relative;
+    border: solid;
+    border-color: black;
+    border-style: double;
+    left: 12%;
+    top: 20%;
+    height: 15%;
+    width: 75%;
+    font-size: 400%;
+  }
+  #loginButton {
+    position: relative;
+    top: 47%;
+    right: 50%;
+    width: 20%;
+    height: 20%;
+    font-size: 2.5vmax;
+    color: white;
+    background-color: #3EA055;
+    border: none;
+    border-radius: 0.5vmax;
+  }
+  #signupButton {
+    position: relative;
+    top: 27%;
+    left: 50%;
+    width: 20%;
+    height: 20%;
+    font-size: 2.25vmax;
+    color: white;
+    background-color: #3EA055;
+    border: none;
+    border-radius: 0.5vmax;
+  }
+  #loginButton:hover {
+    background-color: #387C44;
+  }
+  #signupButton:hover {
+    background-color: #387C44
+  }
+  #databases-sidebar {
+    position: absolute;
+    background-color: #181818;
+    height: 100%;
+    width: 30%;
+    box-shadow: 5px 0px 20px #707070;
+    z-index: 2;
+  }
+  #databaseHeader {
+    position: absolute;
+    color: #D3D3D3;
+    font-size: 3vmax;
+    text-align: center;
+    padding-top: 3%;
+    background-color: #111111;
+    width: 100%;
+    height: 9%;
+    bottom: 85%;
+  }
+  #createButton {
+    position: absolute;
+    top: 92%;
+    width: 100%;
+    background-color: #111111;
+    height: 8%;
+  }
+  #create {
+    position: absolute;
+    background-color: #3EA055;
+    color: white;
+    border-radius: 0.5vmax;
+    border: none;
+    width: 50%;
+    height: 70%;
+    left: 24%;
+    top: 15%;
+    font-size: 1.5vmax;
+  }
+  #create:hover {
+    background-color: #387C44;
+  }
+  #databases {
+    position: absolute;
+    background-color: #181818;
+    width: 100%;
+    top: 11%;
+    height: 81%;
+    overflow-y: scroll;
+  }
+  .databaseButton {
+    position: relative;
+    text-align: center;
+    padding-top: 2%;
+    width: 100%;
+    height: 8%;
+    color: #d3d3d3;
+    font-size: 2vmax;
+    background-color: #181818;
+    border: none;
+    display: grid;
+  }
+  .databaseButton:hover {
+    background-color: #151515;
+  }
+  #create_container {
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    top: 35%;
+    background-color: #303030;
+    height: 30%;
+    width: 30%;
+    border-radius: 0.5vmax;
+    display: none;
+  }
+  #dbName {
+    position: absolute;
+    top: 15%;
+    left: 12%;
+    width: 75%;
+    height: 15%;
+  }
+  #dbPass {
+    position: absolute;
+    top: 35%;
+    left: 12%;
+    width: 75%;
+    height: 15%;
+  }
+  #createCreate {
+    position: absolute;
+    width: 15%;
+    height: 20%;
+    top: 65%;
+    left: 30%;
+    background-color: #3EA055;
+    color: white;
+    border-radius: 0.5vmax;
+    border: none;
+  }
+  #createCreate:hover {
+    background-color: #387C44;
+  }
+  #createCancel {
+    position: absolute;
+    width: 15%;
+    height: 20%;
+    top: 65%;
+    left: 50%;
+    background-color: #b34d4d;
+    color: white;
+    border-radius: 0.5vmax;
+    border: none;
+  }
+  #createCancel:hover {
+    background-color: #a65959;
+  }
+  #data_container {
+    position: absolute;
+    height: 100%;
+    width: 70%;
+    left: 30%;
+    background-color: #d3d3d3;
+    z-index: 1;
+    display: block-axis;
+    visibility: visible;
+    overflow-y: scroll;
+  }
+  #api_container {
+    position: relative;
+    top: 100%;
+    width: 100%;
+    height: 70%;
+    z-index: 1000;
+    background-color: #202020;
+    color: #d3d3d3;
+    padding-bottom: 2%;
+  }
+  #api_info {
+    position: absolute;
+    left: 3%;
+    top: 3%;
+    font-size: 1.5vmax;
+  }
+  #url_bar {
+    position: absolute;
+    left: 5%;
+    display: inline-block;
+    background-color: #202020;
+    color: #D3D3D3;
+    top: 5%;
+    width: 88%;
+    padding-bottom: 2%;
+    font-size: 1.5vmax;
+    padding-left: 2%;
+    border-radius: 0.5vmax;
+  }
+  #deleteDB {
+    position: relative;
+    background-color: #b34d4d;
+    width: 15%;
+    height: 15%;
+    font-size: 1.25vmax;
+    color: #d3d3d3;
+    border: none;
+    border-radius: 1vmax;
+    left: 30%;
+  }
+  #deleteDB:hover {
+    background-color: #a65959;
+  }
+  #editDB {
+    position: relative;
+    background-color: #3EA055;
+    width: 15%;
+    height: 15%;
+    font-size: 1.25vmax;
+    color: #d3d3d3;
+    border: none;
+    border-radius: 1vmax;
+    left: 33%;
+  }
+  #editDB:hover {
+    background-color: #387C44;
+  }
+  #data_box {
+    position: absolute;
+    left: 5%;
+    top: 30%;
+    width: 88.5%;
+  }
+  #data_title {
+    position: inline-grid;
+    color: #181818;
+    font-size: 3vmax;
+  }
+  #dbData {
+    position: relative;
+    background-color: #202020;
+    color: #D3D3D3;
+    padding-left: 2%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    width: 100%;
+    font-size: 1.75vmax;
+    border-radius: 0.5vmax;
+    height: auto;
+    overflow-wrap: break-word;
+  }
+  #requests_box {
+    position: absolute;
+    left: 5%;
+    top: 52%;
+    width: 88%;
+    clear: both;
+  }
+  .data_boxes {
+    position: static;
+    display: grid;
+  }
+  #dbRequests {
+    position: relative;
+    background-color: #202020;
+    width: 100%;
+    font-size: 1.75vmax;
+    border-radius: 0.5vmax;
+    color: #d3d3d3;
+    padding-left: 3%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    overflow-wrap: break-word;
+    height: auto;
+  }
+  #replace_container {
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    top: 35%;
+    background-color: #303030;
+    height: 30%;
+    width: 30%;
+    border-radius: 0.5vmax;
+    display: none;
+  }
+  #replaceArea {
+    width: 100%;
+    height: 85%;
+  }
+  #replaceReplace {
+    position: absolute;
+    background-color: #3EA055;
+    border: none;
+    border-radius: 0.25vmax;
+    width: 25%;
+    height: 15%;
+    left: 24%;
+    top: 85%;
+    color: white;
+  }
+  #replaceCancel {
+    position: absolute;
+    background-color: #b34d4d;
+    border: none;
+    border-radius: 0.25vmax;
+    width: 25%;
+    height: 15%;
+    left: 49%;
+    top: 85%;
+    color: white;
+  }
+  #replaceReplace:hover {
+    background-color: #387C44;
+  }
+  #replaceCancel:hover {
+    background-color: #a65959;
+  }
+  #logout_container {
+    position: absolute;
+    display: block;
+    z-layer: 99999;
+    width: 100%;
+    height: 8%;
+    background-color: #181818;
+    top: 174%;
+  }
+  #log_out {
+    position: absolute;
+    width: 12%;
+    height: 79%;
+    top: 11%;
+    left: 43%;
+    font-size: 1.5vmax;
+    color: white;
+    border-radius: 0.5vmax;
+    border: none;
+    background-color: #b34d4d;
+  }
+  #log_out:hover {
+    background-color: #a65959;
+  }
+</style>
+<!---->
+<script>
+  let validateData = {}
+  
+  async function sign_up() {
+    const username = document.getElementById('usernameInput').value;
+    const password = document.getElementById('passwordInput').value;
+    let payload  = { "username": username, "password": password };
+    let resp = await fetch(("/signup"), {
+      body: JSON.stringify(payload),
+      method: "POST",
+      headers: { "Content-type": "application/json" }
+    })
+    let res = await resp.text();
+    if (res == "usernameExists") {
+      document.getElementById("messageText").innerText = "That username exists.";
+    }
+    if (res == "usernameTooLong") {
+      document.getElementById("messageText").innerText = "Username is too long.";
+    }
+    if (res == "createdAccount") {
+      document.getElementById("messageText").innerText = "Created account. Now log in.";
+      document.getElementById('usernameInput').value = '';
+      document.getElementById('passwordInput').value = '';
+    }
+    document.getElementById("messageText").style.display = "block";
+    document.getElementById("messageText").style.visibility = "visible";
+    setTimeout(() => {
+      document.getElementById("messageText").style.visibility = "hidden";
+    }, 3000);
+  }
+  async function log_in() {
+    const username = document.getElementById('usernameInput').value;
+    const password = document.getElementById('passwordInput').value;
+    let payload  = { "username": username, "password": password };
+    let resp = await fetch(("/login"), {
+      body: JSON.stringify(payload),
+      method: "POST",
+      headers: { "Content-type": "application/json" }
+    })
+    let res = await resp.text();
+    if (res == "wrongCreds") {
+      document.getElementById("messageText").innerText = "Invalid credentials.";
+      document.getElementById("messageText").style.visibility = "visible";
+      setTimeout(() => {
+        document.getElementById("messageText").style.visibility = "hidden";
+      }, 3000);
+    }
+    else {
+      document.getElementById("login_container").style.display = "none";
+      document.getElementById("homepage_container").style.display = "block";
+      validateData = { "username": username, "password": password }
+      homepage_tick(); // constantly load data from server and update page
+    }
+  }
+
+  function createDB() {
+    document.getElementById("create_container").style.display = "block";
+  }
+  function create_cancel() {
+    document.getElementById("create_container").style.display = "none";
+    document.getElementById('dbName').value = '';
+    document.getElementById('dbPass').value = '';
+  }
+  async function create_create() {
+    const dbName = document.getElementById('dbName').value;
+    const dbPass = document.getElementById('dbPass').value;
+    let payload  = {"validateData": validateData, "payload": {"dbName": dbName, "dbPass": dbPass}};
+    let resp = await fetch(("/createDb"), {
+      body: JSON.stringify(payload),
+      method: "POST",
+      headers: { "Content-type": "application/json" }
+    })
+    let res = await resp.text();
+    if (res == "databaseExists") {
+      document.getElementById("messageText").innerText = "Database already exists.";
+      console.log("here")
+    }
+    if (res == "databaseCreated") {
+      document.getElementById("messageText").innerText = "Database created.";
+      homepage_tick();
+    }
+    document.getElementById("create_container").style.display = "none";
+    document.getElementById('dbName').value = '';
+    document.getElementById('dbPass').value = '';
+
+    document.getElementById("messageText").style.visibility = "visible";
+    setTimeout(() => {
+      document.getElementById("messageText").style.visibility = "hidden";
+    }, 3000);
+  }
+
+  let selectedDB = -1
+  let dbKeys, fullData
+  async function homepage_tick() {
+    let payload = { "validateData": validateData }
+    let req = await fetch(("/getData"), {
+      body: JSON.stringify(payload),
+      method: "POST",
+      headers: { "Content-type": "application/json" }
+    })
+    let res = await req.json();
+    // make buttons
+    let buttons = Object.keys(res);
+    let list = document.getElementById('databases');
+    document.getElementById("databases").innerHTML = "";
+    for (let i = 0; i < buttons.length; i++) {
+      let btn = document.createElement("button");
+      btn.innerText = buttons[i];
+      btn.className = "databaseButton";
+      btn.onclick = function() {
+        loadDB(this.id);
+      }
+      btn.id = `Z${i}`;
+      list.appendChild(btn);
+    }
+    // load selected database
+    dbKeys = Object.keys(res);
+    fullData = res;
+    
+    if (dbKeys.length != 0 && selectedDB != -1) {
+      let dbCurrent = res[dbKeys[selectedDB]]
+    
+      const dbKeyAmount = Object.keys(dbCurrent['keys']).length;
+      const dbURL = dbCurrent['url'];
+      const dbRequests = dbCurrent['requests'];
+      const dbCurrentValue = JSON.stringify(dbCurrent['keys']);
+      const dbCurrentVersion = dbCurrent['versions'].length;
+      const dbCurrentVersionURL = `https://airdb.abhiramtx.repl.co/${validateData['username']}/${dbKeys[selectedDB]}/${dbCurrent['password']}/version/${dbCurrentVersion}`;
+      
+      // insert these values into html
+      document.getElementById("dbURL").innerText = `URL: ${dbURL}`;
+      document.getElementById("dbVersion").innerText =  `Version: ${dbCurrentVersionURL}`;
+      document.getElementById("dbData").innerText = dbCurrentValue;
+      list = document.getElementById("dbRequests");
+      document.getElementById("dbRequests").innerHTML = "";
+      for (let i = 0; i < dbRequests.length; i++) {
+        let li = document.createElement("li");
+        li.innerText = `T${dbRequests[i]['time']} | ${dbRequests[i]['ip']}`
+        list.appendChild(li);
+      }
+    }
+    else {
+      document.getElementById("dbURL").innerText = "URL:";
+      document.getElementById("dbVersion").innerText =  "Version:";
+      document.getElementById("dbData").innerText = "DB data";
+      list = document.getElementById("dbRequests");
+      document.getElementById("dbRequests").innerHTML = "";
+      let li = document.createElement("li");
+      li.innerText = "Requests";
+      list.appendChild(li);
+    }
+    // const child1 = document.getElementById("dbData");
+    // const child2 = document.getElementById("requests_box");
+    // const child1Height = child1.offsetHeight;
+    // child2.style.top = child1Height + 420 + 'px';
+    const child1 = document.getElementById("dbData");
+    const child2 = document.getElementById("requests_box");
+    const child1Height = child1.offsetHeight;
+    const spacePercent = 44;
+    const px = Math.round(window.innerHeight * spacePercent / 100);
+    child2.style.top = child1Height + px + 'px';
+    
+    // refresh page every 1000 millis
+    setTimeout(homepage_tick, 1000);
+  }
+  function loadDB(id) {
+    selectedDB = parseInt(id.replace('Z', ''))
+  }
+  async function deleteDB() {
+    if (selectedDB != -1) {
+      let payload  = {"validateData": validateData, "payload": {"id": dbKeys[selectedDB]}};
+      let req = await fetch(("/deleteDB"), {
+        body: JSON.stringify(payload),
+        method: "POST",
+        headers: { "Content-type": "application/json" }
+      })
+      let res = await req.text();
+
+      if (res == "deletedDb") {
+        document.getElementById("messageText").innerText = "Database deleted.";
+        selectedDB = -1
+      }
+      document.getElementById("messageText").style.visibility = "visible";
+      setTimeout(() => {
+        document.getElementById("messageText").style.visibility = "hidden";
+      }, 3000);
+    }  
+  }
+
+  function editDB() {
+    if (selectedDB != -1) {
+      document.getElementById("replaceArea").value = "";
+      document.getElementById("replaceArea").value = JSON.stringify(fullData[dbKeys[selectedDB]]['keys']);
+      document.getElementById("replace_container").style.display = "block";
+    }
+  }
+  function replace_cancel() {
+    document.getElementById("replaceArea").value = "";
+    document.getElementById("replace_container").style.display = "none";
+  }
+  async function replace_replace() {
+    let value = document.getElementById("replaceArea").value;
+    let payload  = {"validateData": validateData, "payload": {"id": dbKeys[selectedDB], "replace": value}};
+    let resp = await fetch(("/replaceDbValue"), {
+      body: JSON.stringify(payload),
+      method: "POST",
+      headers: { "Content-type": "application/json" }
+    })
+    let res = await resp.text();
+    
+    if (res == "updatedKeys") {
+      document.getElementById("messageText").innerText = "Updated value.";
+      document.getElementById("replaceArea").value = "";
+      document.getElementById("replace_container").style.display = "none";
+      homepage_tick();
+    }
+    else {
+      document.getElementById("messageText").innerText = "An error occured.";
+    }
+    document.getElementById("messageText").style.visibility = "visible";
+    setTimeout(() => {
+      document.getElementById("messageText").style.visibility = "hidden";
+    }, 3000);
+  }
+
+  function logout() {
+    validateData = {}
+    window.location.href = "/"
+  }
+</script>
+<!---->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AirDB</title>
+</head>
+<body>
+  <h1 id="messageText">filler</h1>
+  
+  <div id="login_container">
+    <div id="login_box">
+    <input id="usernameInput" type="text" placeholder="Username . . .">
+    <input id="passwordInput" type="text" placeholder="Password . . .">
+    <button id="loginButton" onclick=log_in()>Login</button>
+    <button id="signupButton" onclick=sign_up()>SignUp</button>
+    </div>
+
+    <div id="information" class="login_page">
+      <h1>About AirDB:</h1>
+      <p>Welcome to AirDB! AirDB is an application which allows you to quicky build and use databases. Currently, all databases are free and can store any amount of data. The databases require the use of API requests to create keys, store keys, delete keys, and perform other database functions. The website is for you to only create and delete your databases.</p>
+      <h1>Password-protected databases:</h1>
+      <p>All databases require you to create a custom password when you build them. This adds an extra layer of security to your database when sending http requests with all of the information to your database. All passwords are sha-encrypted and safely stored.</p>
+      <h1>API-based:</h1>
+      <p>All databases you create require the use of API requests to create keys, delete keys, set values, and perform other database functions. This website is only to create or delete your databases, and check their statistics, such as where the API requests originated, and what data each database holds. All API endpoints have special parameters (such as database password, id, and keys), hence it is recommended you keep these values in a secret location, such as local environment variables.</p>
+    </div>
+  </div>
+
+  <div id="homepage_container">
+    <div id="create_container">
+      <input id="dbName" type="text" placeholder="Database name">
+      <input id="dbPass" type="text" placeholder="Database password">
+      <button id="createCreate" onclick=create_create()>Create</button>
+      <button id="createCancel" onclick=create_cancel()>Cancel</button>
+    </div>
+    <div id="replace_container">
+      <textarea id="replaceArea"></textarea>
+      <button id="replaceReplace" onclick=replace_replace()>Replace</button>
+      <button id="replaceCancel" onclick=replace_cancel()>Cancel</button>
+    </div>
+    <div id="databases-sidebar">
+      <h1 id="databaseHeader">Your databases: </h1>
+      <div id="databases">
+        <!-- buttons get created here -->
+      </div>
+      <div id="createButton">
+        <button id="create" onclick=createDB()>Add +</button>
+      </div>
+    </div>
+    <div id="data_container">
+      <div id="url_bar">
+        <h2 id="dbURL">URL:</h2>
+        <h3 id="dbVersion">Version:</h3>
+        <button id="deleteDB" onclick=deleteDB()>Delete</button>
+        <button id="editDB" onclick=editDB()>Edit</button>
+      </div>
+      <div class="data_boxes">
+      <div id="data_box">
+        <h1 id="data_title">Data:</h1>
+        <p id="dbData">DB data</p>
+      </div>
+      <div id="requests_box">
+        <h1 id="data_title">Requests:</h1>
+        <ul id="dbRequests">
+          <!-- list objects go here -->
+          <li>Requests</li>
+        </ul>
+      </div>
+      </div>
+    </div>
+    <div id="api_container">
+      <div id="api_info">
+      <h1 id="api_title">API Docs:</h1>
+      <h3 id="api_example_url">https://airdb.abhiramtx.repl.co/[Username]/[DB name]/[DB password]</h2>
+      <ul id="api_urls">
+        <li>/getValue/[Key] - Gets the value of a key in the database.</li>
+        <br>
+        <li>/setValue/[Key]/[Value] - Sets a key to a certain value.</li>
+        <br>
+        <li>/createKey/[Key]/[OPTIONAL: Value] - Creates a key with a value of 0 by default. The optional value parameter allows you to set the initial value.</li>
+        <br>
+        <li>/deleteKey/[Key] - Deletes a key from the database.</li>
+        <br>
+        <li>/retrieveDB - Retrieves your database.</li>
+        <br>
+        <li>/version/[version] - Retrieves the version which was requested. A new version is made for every edit.</li>
+      </ul>
+      <h3 id="api_example_url">You can access all APIs with a "GET" request method.</h3>
+    </div>
+    </div>
+    <div id="logout_container">
+      <button id="log_out" onclick=logout()>Logout</button>
+    </div>
+  </div>
+</body>
